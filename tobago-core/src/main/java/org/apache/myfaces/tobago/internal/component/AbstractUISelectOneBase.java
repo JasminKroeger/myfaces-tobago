@@ -32,6 +32,11 @@ public abstract class AbstractUISelectOneBase extends javax.faces.component.UISe
 
   public static final String MESSAGE_VALUE_REQUIRED = "tobago.SelectOne.MESSAGE_VALUE_REQUIRED";
 
+  enum Select2Keys {
+    allowCustom,
+    isSelect2
+  }
+
   public void validate(final FacesContext facesContext) {
     if (isRequired()  && !isReadonly()) {
       final Object submittedValue = getSubmittedValue();
@@ -49,6 +54,23 @@ public abstract class AbstractUISelectOneBase extends javax.faces.component.UISe
     }
     super.validate(facesContext);
   }
+
+  public boolean isAllowCustom() {
+    Boolean bool = (Boolean) getStateHelper().eval(Select2Keys.allowCustom);
+    if (bool != null) {
+      return bool;
+    }
+    return false;
+  }
+  public boolean isAllowCustomSet() {
+    return getStateHelper().eval(Select2Keys.allowCustom) != null;
+  }
+
+  public void setAllowCustom(Boolean bool) {
+    getStateHelper().put(Select2Keys.allowCustom, bool);
+  }
+
+
 
   public abstract boolean isReadonly();
 }

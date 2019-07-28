@@ -17,22 +17,29 @@
  * under the License.
  */
 
-package org.apache.myfaces.tobago.internal.component;
+package org.apache.myfaces.tobago.facelets.extension;
 
-public abstract class AbstractUISelectOneChoice extends AbstractUISelectOneBase {
+import org.apache.myfaces.tobago.component.RendererTypes;
+import org.apache.myfaces.tobago.component.UISelectManyBox;
+import org.apache.myfaces.tobago.component.UISelectManyListbox;
 
+import javax.faces.view.facelets.ComponentConfig;
 
+public class SelectManyBoxExtensionHandler extends TobagoLabelExtensionHandler {
 
-  public boolean isSelect2() {
-    Boolean bool = (Boolean) getStateHelper().eval(Select2Keys.isSelect2);
-    if (bool != null) {
-      return bool;
-    }
-    return false;
+  public SelectManyBoxExtensionHandler(final ComponentConfig config) {
+    super(config);
   }
 
-  public void setSelect2(Boolean bool) {
-    getStateHelper().put(Select2Keys.isSelect2, bool);
+  protected String getSubComponentType() {
+    return UISelectManyBox.COMPONENT_TYPE;
   }
 
+  protected String getSubRendererType() {
+    return RendererTypes.SELECT_MANY_BOX;
+  }
+
+  protected String getRows() {
+    return "1*";
+  }
 }

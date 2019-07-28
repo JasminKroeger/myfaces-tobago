@@ -47,12 +47,12 @@
     </tc:selectBooleanCheckbox>
 
     <!-- code-sniplet-start id="selectManyListbox" -->
-    <tx:selectManyListbox label="Contact via: ">
+    <tx:selectManyBox label="Select Many Box: ">
       <f:selectItem itemValue="Phone" itemLabel="Phone"/>
       <f:selectItem itemValue="eMail" itemLabel="eMail"/>
       <f:selectItem itemValue="Mobile" itemLabel="Mobile"/>
       <f:selectItem itemValue="Fax" itemLabel="Faxscimile"/>
-    </tx:selectManyListbox>
+    </tx:selectManyBox>
     <tx:selectManyListbox label="Contact via: ">
       <f:selectItem itemValue="Phone" itemLabel="Phone"/>
       <f:selectItem itemValue="eMail" itemLabel="eMail"/>
@@ -66,7 +66,9 @@
 
     <!-- code-sniplet-start id="selectOneChoice" -->
     <tx:selectOneChoice value="selectOneChoice0"
-                        label="Contact me1: ">
+                        label="Contact me1: "
+                        select2="true">
+      
       <tc:selectItem itemLabel="Letter" itemValue="letter"/>
       <tc:selectItem itemLabel="Phone" itemValue="phone"/>
       <tc:selectItem itemLabel="eMail" itemValue="eMail"/>
