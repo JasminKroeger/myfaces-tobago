@@ -31,7 +31,7 @@ public abstract class AbstractUISelectOneChoice extends AbstractUISelectOneBase 
     return false;
   }
 
-  public void setSelect2(Boolean bool) {
+  public void setSelect2(boolean bool) {
     getStateHelper().put(Select2Keys.isSelect2, bool);
   }
 

@@ -21,6 +21,7 @@ package org.apache.myfaces.tobago.renderkit.html.standard.standard.tag;
 
 import org.apache.myfaces.tobago.component.UISelectManyBox;
 import org.apache.myfaces.tobago.component.UISelectManyListbox;
+import org.apache.myfaces.tobago.layout.Measure;
 import org.apache.myfaces.tobago.renderkit.SelectManyRendererBase;
 import org.apache.myfaces.tobago.renderkit.css.Classes;
 import org.apache.myfaces.tobago.renderkit.css.Style;
@@ -61,11 +62,17 @@ public class SelectManyBoxRenderer extends SelectManyRendererBase {
     final Iterable<SelectItem> items = SelectItemUtils.getItemIterator(facesContext, select);
     final boolean readonly = select.isReadonly();
     final boolean disabled = !items.iterator().hasNext() || select.isDisabled() || readonly;
+    final Style style = new Style(facesContext, select);
 
     ComponentUtils.putDataAttribute(select, "tobago-select2", "{}");
 
 
     final String title = HtmlRendererUtils.getTitleFromTipAndMessages(facesContext, select);
+    writer.startElement(HtmlElements.DIV, select);
+    writer.writeStyleAttribute(style);
+    style.setTop(Measure.ZERO);
+    style.setLeft(Measure.ZERO);
+
     writer.startElement(HtmlElements.SELECT, select);
     writer.writeNameAttribute(id);
     writer.writeIdAttribute(id);
@@ -78,7 +85,6 @@ public class SelectManyBoxRenderer extends SelectManyRendererBase {
     if (tabIndex != null) {
       writer.writeAttribute(HtmlAttributes.TABINDEX, tabIndex);
     }
-    final Style style = new Style(facesContext, select);
     writer.writeStyleAttribute(style);
     writer.writeClassAttribute(Classes.create(select));
     writer.writeAttribute(HtmlAttributes.MULTIPLE, HtmlAttributes.MULTIPLE, false);
@@ -91,6 +97,7 @@ public class SelectManyBoxRenderer extends SelectManyRendererBase {
     HtmlRendererUtils.renderSelectItems(select, items, values, submittedValues, writer, facesContext);
 
     writer.endElement(HtmlElements.SELECT);
+    writer.endElement(HtmlElements.DIV);
   }
 
 }

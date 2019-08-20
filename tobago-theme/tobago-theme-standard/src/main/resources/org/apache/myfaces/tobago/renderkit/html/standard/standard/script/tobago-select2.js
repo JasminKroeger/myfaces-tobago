@@ -24,18 +24,10 @@ Tobago.Select2 = {
           var element = jQuery(this);
           var options = element.data("tobago-select2");
           console.info("typeof options: " + typeof options);
-          var value = {
-            minimumResultsForSearch: Infinity,
-            ts: "hallo",
-            tn: 22
-          };
-          console.info("XXXX : " + JSON.stringify(value));
-          options.containerCss = element.data("tobago-style");
-          options.dropdownCss = {
-            left: options.containerCss.left,
-            top: options.containerCss.top,
-            position: "absolute"
-          };
+
+          if (element.hasClass("tobago-selectManyBox")) {
+            options.containerCss = {height: element.data("tobago-style").height};
+          }
           console.info("Select2.init" + element.attr("id") + " with data: " + JSON.stringify(options)); // @DEV_ONLY
           element.select2(options);
         });

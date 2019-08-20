@@ -1043,6 +1043,13 @@ input.tobago-time-markup-error, input.tobago-time-markup-fatal {
 
 /* select2 */
 
+.select2-container--default .select2-selection--single {
+  border: 1px solid darken(@borderColor, 10%);
+  font: @font;
+  .border-radius;
+  height: 20px;
+}
+
 .select2-container--default .select2-selection--single .select2-selection__rendered {
   color: @textColor;
   line-height: 18px;
@@ -1055,4 +1062,11 @@ input.tobago-time-markup-error, input.tobago-time-markup-fatal {
 
 .select2-container--default .select2-selection--single .select2-selection__arrow b {
   border-color: @textColor transparent transparent transparent;
+}
+
+.select2-container--default .select2-selection--multiple {
+  border: 1px solid darken(@borderColor, 10%);
+  font: @font;
+  .border-radius;
+
 }

@@ -20,6 +20,7 @@
 package org.apache.myfaces.tobago.renderkit.html.standard.standard.tag;
 
 import org.apache.myfaces.tobago.component.UISelectOneChoice;
+import org.apache.myfaces.tobago.layout.Measure;
 import org.apache.myfaces.tobago.renderkit.HtmlUtils;
 import org.apache.myfaces.tobago.renderkit.SelectOneRendererBase;
 import org.apache.myfaces.tobago.renderkit.css.Classes;
@@ -64,6 +65,15 @@ public class SelectOneChoiceRenderer extends SelectOneRendererBase {
     final Iterable<SelectItem> items = SelectItemUtils.getItemIterator(facesContext, select);
     final String title = HtmlRendererUtils.getTitleFromTipAndMessages(facesContext, select);
     final boolean disabled = !items.iterator().hasNext() || select.isDisabled() || select.isReadonly();
+    final Style style = new Style(facesContext, select);
+
+    if (select.isSelect2()) {
+      writer.startElement(HtmlElements.DIV, select);
+      writer.writeStyleAttribute(style);
+      style.setTop(Measure.ZERO);
+      style.setLeft(Measure.ZERO);
+    }
+
 
     writer.startElement(HtmlElements.SELECT, select);
     writer.writeNameAttribute(id);
@@ -74,7 +84,6 @@ public class SelectOneChoiceRenderer extends SelectOneRendererBase {
     if (tabIndex != null) {
       writer.writeAttribute(HtmlAttributes.TABINDEX, tabIndex);
     }
-    final Style style = new Style(facesContext, select);
     writer.writeStyleAttribute(style);
     writer.writeClassAttribute(Classes.create(select));
     if (title != null) {
@@ -91,6 +100,10 @@ public class SelectOneChoiceRenderer extends SelectOneRendererBase {
         facesContext);
 
     writer.endElement(HtmlElements.SELECT);
+    if (select.isSelect2()) {
+      writer.endElement(HtmlElements.DIV);
+    }
+
     super.encodeEnd(facesContext, select);
   }
 }
