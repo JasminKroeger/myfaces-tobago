@@ -21,12 +21,14 @@ package org.apache.myfaces.tobago.renderkit.html.standard.standard.tag;
 
 import org.apache.myfaces.tobago.component.UISelectOneChoice;
 import org.apache.myfaces.tobago.layout.Measure;
+import org.apache.myfaces.tobago.renderkit.html.Select2Options;
 import org.apache.myfaces.tobago.renderkit.HtmlUtils;
 import org.apache.myfaces.tobago.renderkit.SelectOneRendererBase;
 import org.apache.myfaces.tobago.renderkit.css.Classes;
 import org.apache.myfaces.tobago.renderkit.css.Style;
 import org.apache.myfaces.tobago.renderkit.html.HtmlAttributes;
 import org.apache.myfaces.tobago.renderkit.html.HtmlElements;
+import org.apache.myfaces.tobago.renderkit.html.JsonUtils;
 import org.apache.myfaces.tobago.renderkit.html.util.HtmlRendererUtils;
 import org.apache.myfaces.tobago.renderkit.util.SelectItemUtils;
 import org.apache.myfaces.tobago.util.ComponentUtils;
@@ -57,17 +59,19 @@ public class SelectOneChoiceRenderer extends SelectOneRendererBase {
     final UISelectOneChoice select = (UISelectOneChoice) component;
     final TobagoResponseWriter writer = HtmlRendererUtils.getTobagoResponseWriter(facesContext);
 
-    if (select.isSelect2()) {
-      ComponentUtils.putDataAttribute(select, "tobago-select2", "{}");
-    }
-
     final String id = select.getClientId(facesContext);
     final Iterable<SelectItem> items = SelectItemUtils.getItemIterator(facesContext, select);
     final String title = HtmlRendererUtils.getTitleFromTipAndMessages(facesContext, select);
     final boolean disabled = !items.iterator().hasNext() || select.isDisabled() || select.isReadonly();
     final Style style = new Style(facesContext, select);
+    final Select2Options select2Options = Select2Options.of(select);
+    final boolean renderAsSelect2 = select2Options.hasAnyOption();
 
-    if (select.isSelect2()) {
+    if (renderAsSelect2) {
+      String json = select2Options.toJson();
+      LOG.warn("Select2 json = \"{}\"", json);
+      ComponentUtils.putDataAttribute(select, "tobago-select2", json);
+
       writer.startElement(HtmlElements.DIV, select);
       writer.writeStyleAttribute(style);
       style.setTop(Measure.ZERO);
@@ -100,7 +104,7 @@ public class SelectOneChoiceRenderer extends SelectOneRendererBase {
         facesContext);
 
     writer.endElement(HtmlElements.SELECT);
-    if (select.isSelect2()) {
+    if (renderAsSelect2) {
       writer.endElement(HtmlElements.DIV);
     }
 

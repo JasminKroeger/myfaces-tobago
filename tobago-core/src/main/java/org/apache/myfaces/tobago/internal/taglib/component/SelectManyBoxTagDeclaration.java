@@ -44,6 +44,7 @@ import org.apache.myfaces.tobago.internal.taglib.declaration.IsGridLayoutCompone
 import org.apache.myfaces.tobago.internal.taglib.declaration.IsReadonly;
 import org.apache.myfaces.tobago.internal.taglib.declaration.IsRendered;
 import org.apache.myfaces.tobago.internal.taglib.declaration.IsRequiredForSelect;
+import org.apache.myfaces.tobago.internal.taglib.declaration.Select2;
 
 import javax.faces.component.UISelectMany;
 
@@ -53,7 +54,7 @@ import javax.faces.component.UISelectMany;
 @Tag(name = "selectManyBox")
 @UIComponentTag(
     uiComponent = "org.apache.myfaces.tobago.component.UISelectManyBox",
-    uiComponentBaseClass = "org.apache.myfaces.tobago.internal.component.AbstractUISelectMany",
+    uiComponentBaseClass = "org.apache.myfaces.tobago.internal.component.AbstractUISelectManyBox",
     uiComponentFacesClass = "javax.faces.component.UISelectMany",
     componentFamily = UISelectMany.COMPONENT_FAMILY,
     rendererType = RendererTypes.SELECT_MANY_BOX,
@@ -63,7 +64,8 @@ public interface SelectManyBoxTagDeclaration
     extends HasId, IsDisabled, IsRendered, HasBinding, HasTip,
     IsReadonly, HasConverter, IsRequiredForSelect, HasMarkup, HasCurrentMarkup,
     HasLabel, HasValidator, HasOnchange, HasValueChangeListener,
-    HasValidatorMessage, HasConverterMessage, HasRequiredMessageForSelect, HasTabIndex, IsFocus, IsGridLayoutComponent {
+    HasValidatorMessage, HasConverterMessage, HasRequiredMessageForSelect, HasTabIndex, IsFocus, IsGridLayoutComponent,
+    Select2 {
 
   /**
    * The value of the multi select.
