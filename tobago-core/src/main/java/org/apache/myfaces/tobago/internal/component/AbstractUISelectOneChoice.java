@@ -48,7 +48,7 @@ public abstract class AbstractUISelectOneChoice extends AbstractUISelectOneBase 
     return getStateHelper().eval(Select2Keys.allowClear) != null;
   }
 
-  public void setAllowClear(Boolean allowClear) {
+  public void setAllowClear(boolean allowClear) {
     getStateHelper().put(Select2Keys.allowClear, allowClear);
   }
 
@@ -64,7 +64,7 @@ public abstract class AbstractUISelectOneChoice extends AbstractUISelectOneBase 
     return getStateHelper().eval(Select2Keys.allowCustom) != null;
   }
 
-  public void setAllowCustom(Boolean allowCustom) {
+  public void setAllowCustom(boolean allowCustom) {
     getStateHelper().put(Select2Keys.allowCustom, allowCustom);
   }
 
@@ -79,7 +79,7 @@ public abstract class AbstractUISelectOneChoice extends AbstractUISelectOneBase 
     return getStateHelper().eval(Select2Keys.maximumInputLength) != null;
   }
 
-  public void setMaximumInputLength(Integer minimumInputLength) {
+  public void setMaximumInputLength(int minimumInputLength) {
     getStateHelper().put(Select2Keys.maximumInputLength, minimumInputLength);
   }
 
@@ -94,7 +94,7 @@ public abstract class AbstractUISelectOneChoice extends AbstractUISelectOneBase 
     return getStateHelper().eval(Select2Keys.minimumInputLength) != null;
   }
 
-  public void setMinimumInputLength(Integer minimumInputLength) {
+  public void setMinimumInputLength(int minimumInputLength) {
     getStateHelper().put(Select2Keys.minimumInputLength, minimumInputLength);
   }
 
@@ -109,7 +109,7 @@ public abstract class AbstractUISelectOneChoice extends AbstractUISelectOneBase 
     return getStateHelper().eval(Select2Keys.maximumSelectionLength) != null;
   }
 
-  public void setMaximumSelectionLength(Integer maximumSelectionLength) {
+  public void setMaximumSelectionLength(int maximumSelectionLength) {
     getStateHelper().put(Select2Keys.maximumSelectionLength, maximumSelectionLength);
   }
 

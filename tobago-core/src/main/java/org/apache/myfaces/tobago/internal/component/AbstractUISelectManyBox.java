@@ -1,8 +1,22 @@
+//
+// Source code recreated from a .class file by IntelliJ IDEA
+// (powered by Fernflower decompiler)
+//
+
 package org.apache.myfaces.tobago.internal.component;
 
 import org.apache.myfaces.tobago.internal.component.AbstractUISelectOneChoice.Select2Keys;
 
+import javax.faces.context.FacesContext;
+
 public abstract class AbstractUISelectManyBox extends AbstractUISelectMany {
+
+  @Override
+  protected void validateValue(FacesContext context, Object convertedValue) {
+    if (!isAllowCustom()) {
+      super.validateValue(context, convertedValue);
+    }
+  }
 
   public boolean isAllowClear() {
     Boolean allowClear = (Boolean) getStateHelper().eval(Select2Keys.allowClear);
@@ -15,7 +29,7 @@ public abstract class AbstractUISelectManyBox extends AbstractUISelectMany {
     return getStateHelper().eval(Select2Keys.allowClear) != null;
   }
 
-  public void setAllowClear(Boolean allowClear) {
+  public void setAllowClear(boolean allowClear) {
     getStateHelper().put(Select2Keys.allowClear, allowClear);
   }
 
@@ -31,7 +45,7 @@ public abstract class AbstractUISelectManyBox extends AbstractUISelectMany {
     return getStateHelper().eval(Select2Keys.allowCustom) != null;
   }
 
-  public void setAllowCustom(Boolean allowCustom) {
+  public void setAllowCustom(boolean allowCustom) {
     getStateHelper().put(Select2Keys.allowCustom, allowCustom);
   }
 
@@ -46,7 +60,7 @@ public abstract class AbstractUISelectManyBox extends AbstractUISelectMany {
     return getStateHelper().eval(Select2Keys.maximumInputLength) != null;
   }
 
-  public void setMaximumInputLength(Integer minimumInputLength) {
+  public void setMaximumInputLength(int minimumInputLength) {
     getStateHelper().put(Select2Keys.maximumInputLength, minimumInputLength);
   }
 
@@ -61,7 +75,7 @@ public abstract class AbstractUISelectManyBox extends AbstractUISelectMany {
     return getStateHelper().eval(Select2Keys.minimumInputLength) != null;
   }
 
-  public void setMinimumInputLength(Integer minimumInputLength) {
+  public void setMinimumInputLength(int minimumInputLength) {
     getStateHelper().put(Select2Keys.minimumInputLength, minimumInputLength);
   }
 
@@ -76,7 +90,7 @@ public abstract class AbstractUISelectManyBox extends AbstractUISelectMany {
     return getStateHelper().eval(Select2Keys.maximumSelectionLength) != null;
   }
 
-  public void setMaximumSelectionLength(Integer maximumSelectionLength) {
+  public void setMaximumSelectionLength(int maximumSelectionLength) {
     getStateHelper().put(Select2Keys.maximumSelectionLength, maximumSelectionLength);
   }
 

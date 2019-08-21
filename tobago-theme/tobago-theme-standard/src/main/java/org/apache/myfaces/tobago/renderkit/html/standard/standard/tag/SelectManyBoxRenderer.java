@@ -27,6 +27,7 @@ import org.apache.myfaces.tobago.renderkit.css.Classes;
 import org.apache.myfaces.tobago.renderkit.css.Style;
 import org.apache.myfaces.tobago.renderkit.html.HtmlAttributes;
 import org.apache.myfaces.tobago.renderkit.html.HtmlElements;
+import org.apache.myfaces.tobago.renderkit.html.Select2Options;
 import org.apache.myfaces.tobago.renderkit.html.util.HtmlRendererUtils;
 import org.apache.myfaces.tobago.renderkit.util.SelectItemUtils;
 import org.apache.myfaces.tobago.util.ComponentUtils;
@@ -61,11 +62,11 @@ public class SelectManyBoxRenderer extends SelectManyRendererBase {
     final String id = select.getClientId(facesContext);
     final Iterable<SelectItem> items = SelectItemUtils.getItemIterator(facesContext, select);
     final boolean readonly = select.isReadonly();
-    final boolean disabled = !items.iterator().hasNext() || select.isDisabled() || readonly;
+    final boolean disabled = (!items.iterator().hasNext() && !select.isAllowCustom())
+        || select.isDisabled() || readonly;
     final Style style = new Style(facesContext, select);
 
-    ComponentUtils.putDataAttribute(select, "tobago-select2", "{}");
-
+    ComponentUtils.putDataAttribute(select, "tobago-select2", Select2Options.of(select).toJson());
 
     final String title = HtmlRendererUtils.getTitleFromTipAndMessages(facesContext, select);
     writer.startElement(HtmlElements.DIV, select);
