@@ -30,6 +30,7 @@ public class Select2Options {
   private Boolean tags;
   private String[] tokenSeparators;
   private Boolean allowClear;
+  private Boolean dropdownAutoWidth;
   private String language;
   private String matcher;
   private Integer maximumInputLength;
@@ -43,6 +44,7 @@ public class Select2Options {
   public static Select2Options of(UISelectOneChoice select) {
     Select2Options options = new Select2Options();
     options.renderSelect2 = select.isSelect2();
+    options.dropdownAutoWidth = true;
 
     if (select.isMinimumResultsForSearchSet()) {
       options.setMinimumResultsForSearch(select.getMinimumResultsForSearch());
