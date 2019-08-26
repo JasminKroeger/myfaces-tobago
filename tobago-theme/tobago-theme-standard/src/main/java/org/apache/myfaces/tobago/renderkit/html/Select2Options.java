@@ -27,8 +27,6 @@ import javax.faces.context.FacesContext;
 
 public class Select2Options {
 
-  private Boolean tags;
-  private String[] tokenSeparators;
   private Boolean allowClear;
   private Boolean dropdownAutoWidth;
   private String language;
@@ -40,6 +38,9 @@ public class Select2Options {
   private boolean minimumResultsForSearchSet;
   private String placeholder;
   private boolean renderSelect2;
+  private Boolean tags;
+  private String tokenizer;
+  private String[] tokenSeparators;
 
   public static Select2Options of(UISelectOneChoice select) {
     Select2Options options = new Select2Options();
@@ -61,6 +62,10 @@ public class Select2Options {
     FacesContext facesContext = FacesContext.getCurrentInstance();
     if (facesContext != null) {
       options.setLanguage(facesContext.getViewRoot().getLocale().getLanguage());
+    }
+
+    if (select.isMatcherSet()) {
+      options.setMatcher(select.getMatcher());
     }
 
     if (select.isMaximumInputLengthSet()) {
@@ -98,6 +103,10 @@ public class Select2Options {
       options.setLanguage(facesContext.getViewRoot().getLocale().getLanguage());
     }
 
+    if (select.isMatcherSet()) {
+      options.setMatcher(select.getMatcher());
+    }
+
     if (select.isMaximumInputLengthSet()) {
       options.setMaximumInputLength(select.getMaximumInputLength());
     }
@@ -115,15 +124,16 @@ public class Select2Options {
 
   public boolean hasAnyOption() {
     return renderSelect2
-        || tags != null
-        || tokenSeparators != null
         || allowClear != null
         || matcher != null
         || maximumInputLength != null
         || minimumInputLength != null
         || maximumSelectionLength != null
         || minimumResultsForSearchSet
-        || placeholder != null;
+        || placeholder != null
+        || tags != null
+        || tokenizer != null
+        || tokenSeparators != null;
   }
 
   public Boolean isTags() {

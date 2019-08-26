@@ -49,6 +49,21 @@ public abstract class AbstractUISelectManyBox extends AbstractUISelectMany {
     getStateHelper().put(Select2Keys.allowCustom, allowCustom);
   }
 
+  public String getMatcher() {
+    String matcher = (String) getStateHelper().eval(Select2Keys.matcher);
+    if (matcher != null) {
+      return matcher;
+    }
+    return null;
+  }
+  public boolean isMatcherSet() {
+    return getStateHelper().eval(Select2Keys.matcher) != null;
+  }
+
+  public void setMatcher(String matcher) {
+    getStateHelper().put(Select2Keys.matcher, matcher);
+  }
+
   public int getMaximumInputLength() {
     Integer maximumInputLength = (Integer) getStateHelper().eval(Select2Keys.maximumInputLength);
     if (maximumInputLength != null) {
@@ -110,5 +125,37 @@ public abstract class AbstractUISelectManyBox extends AbstractUISelectMany {
     return getStateHelper().eval(Select2Keys.minimumResultsForSearch) != null;
   }
 
+
+  public String getTokenizer() {
+    String tokenizer = (String) getStateHelper().eval(Select2Keys.tokenizer);
+    if (tokenizer != null) {
+      return tokenizer;
+    }
+    return null;
+  }
+
+  public boolean isTokenizerSet() {
+    return getStateHelper().eval(Select2Keys.tokenizer) != null;
+  }
+
+  public void setTokenizer(String tokenizer) {
+    getStateHelper().put(Select2Keys.tokenizer, tokenizer);
+  }
+
+  public String getTokenSeparators() {
+    String tokenSeparators = (String) getStateHelper().eval(Select2Keys.tokenSeparators);
+    if (tokenSeparators != null) {
+      return tokenSeparators;
+    }
+    return null;
+  }
+
+  public boolean isTokenSeparatorsSet() {
+    return getStateHelper().eval(Select2Keys.tokenSeparators) != null;
+  }
+
+  public void setTokenSeparators(String tokenSeparators) {
+    getStateHelper().put(Select2Keys.tokenSeparators, tokenSeparators);
+  }
 
 }

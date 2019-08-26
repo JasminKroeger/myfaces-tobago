@@ -19,12 +19,12 @@ public interface Select2 {
   @UIComponentTagAttribute(type = "boolean", defaultValue = "false", generate = false)
   void setAllowCustom(String allowed);
 
-//  /**
-//   * Flag indicating that this select
-//   */
-//  @TagAttribute()
-//  @UIComponentTagAttribute(type = "string", generate = false)
-//  void setMatcher(String allowed);
+  /**
+   * Flag indicating that this select
+   */
+  @TagAttribute()
+  @UIComponentTagAttribute(type = "string", generate = false)
+  void setMatcher(String matcher);
 
   /**
    * Flag indicating that this select

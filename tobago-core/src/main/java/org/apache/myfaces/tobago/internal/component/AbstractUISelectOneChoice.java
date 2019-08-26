@@ -30,7 +30,9 @@ public abstract class AbstractUISelectOneChoice extends AbstractUISelectOneBase 
     maximumInputLength,
     minimumInputLength,
     maximumSelectionLength,
-    minimumResultsForSearch
+    minimumResultsForSearch,
+    tokenizer,
+    tokenSeparators
   }
 
 
@@ -66,6 +68,22 @@ public abstract class AbstractUISelectOneChoice extends AbstractUISelectOneBase 
 
   public void setAllowCustom(boolean allowCustom) {
     getStateHelper().put(Select2Keys.allowCustom, allowCustom);
+  }
+
+  public String getMatcher() {
+    String matcher = (String) getStateHelper().eval(Select2Keys.matcher);
+    if (matcher != null) {
+      return matcher;
+    }
+    return null;
+  }
+
+  public boolean isMatcherSet() {
+    return getStateHelper().eval(Select2Keys.matcher) != null;
+  }
+
+  public void setMatcher(String matcher) {
+    getStateHelper().put(Select2Keys.matcher, matcher);
   }
 
   public int getMaximumInputLength() {

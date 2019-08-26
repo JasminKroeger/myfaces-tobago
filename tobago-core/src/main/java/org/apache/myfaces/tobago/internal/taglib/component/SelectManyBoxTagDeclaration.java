@@ -73,4 +73,20 @@ public interface SelectManyBoxTagDeclaration
   @TagAttribute
   @UIComponentTagAttribute(type = {"java.lang.Object[]", "java.util.List"})
   void setValue(String value);
+
+
+
+  /**
+   * Flag indicating that this select
+   */
+  @TagAttribute()
+  @UIComponentTagAttribute(type = "string", generate = false)
+  void setTokenizer(String tokenizer);
+
+  /**
+   * Flag indicating that this select
+   */
+  @TagAttribute()
+  @UIComponentTagAttribute(type = "string", generate = false)
+  void setTokenSeparators(String tokenSeparators);
 }
