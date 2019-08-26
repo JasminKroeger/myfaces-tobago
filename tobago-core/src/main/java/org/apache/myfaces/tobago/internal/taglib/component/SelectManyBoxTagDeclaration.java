@@ -32,6 +32,7 @@ import org.apache.myfaces.tobago.internal.taglib.declaration.HasId;
 import org.apache.myfaces.tobago.internal.taglib.declaration.HasLabel;
 import org.apache.myfaces.tobago.internal.taglib.declaration.HasMarkup;
 import org.apache.myfaces.tobago.internal.taglib.declaration.HasOnchange;
+import org.apache.myfaces.tobago.internal.taglib.declaration.HasPlaceholder;
 import org.apache.myfaces.tobago.internal.taglib.declaration.HasRequiredMessageForSelect;
 import org.apache.myfaces.tobago.internal.taglib.declaration.HasTabIndex;
 import org.apache.myfaces.tobago.internal.taglib.declaration.HasTip;
@@ -65,7 +66,7 @@ public interface SelectManyBoxTagDeclaration
     IsReadonly, HasConverter, IsRequiredForSelect, HasMarkup, HasCurrentMarkup,
     HasLabel, HasValidator, HasOnchange, HasValueChangeListener,
     HasValidatorMessage, HasConverterMessage, HasRequiredMessageForSelect, HasTabIndex, IsFocus, IsGridLayoutComponent,
-    Select2 {
+    Select2, HasPlaceholder {
 
   /**
    * The value of the multi select.
@@ -81,7 +82,7 @@ public interface SelectManyBoxTagDeclaration
    * This is a select2 feature and will force select2=true
    */
   @TagAttribute()
-  @UIComponentTagAttribute(type = "string", generate = false)
+  @UIComponentTagAttribute(generate = false)
   void setTokenizer(String tokenizer);
 
   /**
@@ -89,6 +90,6 @@ public interface SelectManyBoxTagDeclaration
    * This is a select2 feature and will force select2=true
    */
   @TagAttribute()
-  @UIComponentTagAttribute(type = "string", generate = false)
+  @UIComponentTagAttribute(generate = false)
   void setTokenSeparators(String tokenSeparators);
 }

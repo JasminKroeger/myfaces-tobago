@@ -80,6 +80,11 @@ public class Select2Options {
       options.setMaximumSelectionLength(select.getMaximumSelectionLength());
     }
 
+    String placeholder = select.getPlaceholder();
+    if (placeholder != null && placeholder.length() > 0) {
+      options.setPlaceholder(placeholder);
+    }
+
     return options;
   }
 
@@ -117,6 +122,11 @@ public class Select2Options {
 
     if (select.isMaximumSelectionLengthSet()) {
       options.setMaximumSelectionLength(select.getMaximumSelectionLength());
+    }
+
+    String placeholder = select.getPlaceholder();
+    if (placeholder != null && placeholder.length() > 0) {
+      options.setPlaceholder(placeholder);
     }
 
     return options;

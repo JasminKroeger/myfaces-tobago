@@ -86,9 +86,21 @@ public interface SelectOneChoiceTagDeclaration
 
   /**
    * The minimum number of results required to display the search box.
+   *
    * This is a select2 feature and will force select2=true
    */
   @TagAttribute()
   @UIComponentTagAttribute(type = "int", defaultValue = "20", generate = false)
   void setMinimumResultsForSearch(String disabled);
+
+  /**
+   * Displays a short text in the input field, that describes the meaning of this field.
+   * This is part of HTML 5, the theme should emulate the behaviour, when the browser doesn't support it.
+   *
+   * This is a select2 feature and will force select2=true
+   */
+  @TagAttribute()
+  @UIComponentTagAttribute
+  void setPlaceholder(String allowed);
+
 }
