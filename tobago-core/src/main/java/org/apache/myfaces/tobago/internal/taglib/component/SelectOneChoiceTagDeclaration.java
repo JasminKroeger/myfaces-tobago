@@ -35,7 +35,6 @@ import org.apache.myfaces.tobago.internal.taglib.declaration.HasTip;
 import org.apache.myfaces.tobago.internal.taglib.declaration.IsDisabled;
 import org.apache.myfaces.tobago.internal.taglib.declaration.IsReadonly;
 import org.apache.myfaces.tobago.internal.taglib.declaration.IsRendered;
-import org.apache.myfaces.tobago.internal.taglib.declaration.Select2One;
 import org.apache.myfaces.tobago.internal.taglib.declaration.Select2;
 
 import javax.faces.component.UISelectOne;
@@ -67,7 +66,7 @@ import javax.faces.component.UISelectOne;
         })
 public interface SelectOneChoiceTagDeclaration
     extends SelectOneTagDeclaration, HasId, IsDisabled,
-            IsReadonly, HasLabel, IsRendered, HasConverter, HasBinding, HasTip, Select2One, Select2 {
+            IsReadonly, HasLabel, IsRendered, HasConverter, HasBinding, HasTip, Select2 {
 
   /**
    * Flag indicating that selecting an Item representing a value is required.
@@ -77,4 +76,19 @@ public interface SelectOneChoiceTagDeclaration
   @TagAttribute()
   @UIComponentTagAttribute(type = "boolean", defaultValue = "false")
   void setRequired(String required);
+
+  /**
+   * Flag indicating that this element is rendered as select2.
+   */
+  @TagAttribute()
+  @UIComponentTagAttribute(type = "boolean", defaultValue = "false")
+  void setSelect2(String disabled);
+
+  /**
+   * The minimum number of results required to display the search box.
+   * This is a select2 feature and will force select2=true
+   */
+  @TagAttribute()
+  @UIComponentTagAttribute(type = "int", defaultValue = "20", generate = false)
+  void setMinimumResultsForSearch(String disabled);
 }

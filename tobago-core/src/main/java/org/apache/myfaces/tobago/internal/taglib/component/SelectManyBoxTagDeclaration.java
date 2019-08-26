@@ -77,14 +77,16 @@ public interface SelectManyBoxTagDeclaration
 
 
   /**
-   * Flag indicating that this select
+   * A javascript callback that handles automatic tokenization of free-text entry.
+   * This is a select2 feature and will force select2=true
    */
   @TagAttribute()
   @UIComponentTagAttribute(type = "string", generate = false)
   void setTokenizer(String tokenizer);
 
   /**
-   * Flag indicating that this select
+   * The list of characters that should be used as token separators.
+   * This is a select2 feature and will force select2=true
    */
   @TagAttribute()
   @UIComponentTagAttribute(type = "string", generate = false)
