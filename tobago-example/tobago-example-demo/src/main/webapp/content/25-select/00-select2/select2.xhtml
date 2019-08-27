@@ -63,11 +63,11 @@
           <tc:selectItem itemLabel="Fax" itemValue="fax"/>
         </tc:selectOneChoice>
 
-        <tc:label value="Suppressed filter input " for="one_2"/>
+        <tc:label value="Suppressed filter input with placeholder" for="one_2"/>
         <tc:selectOneChoice id="one_2"
                             minimumResultsForSearch="10"
-                            value=""
-                            select2="true">
+                            placeholder="Please select message type"
+                            value="">
 
           <tc:selectItem itemLabel="Letter" itemValue="letter"/>
           <tc:selectItem itemLabel="Phone" itemValue="phone"/>
@@ -80,8 +80,7 @@
                             allowCustom="true"
                             placeholder="Custom input allowed"
                             allowClear="true"
-                            value=""
-                            select2="true">
+                            value="">
 
           <tc:selectItem itemLabel="Letter" itemValue="letter"/>
           <tc:selectItem itemLabel="Phone" itemValue="phone"/>

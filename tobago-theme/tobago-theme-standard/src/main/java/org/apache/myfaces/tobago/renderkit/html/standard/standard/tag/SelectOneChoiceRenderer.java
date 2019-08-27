@@ -99,7 +99,11 @@ public class SelectOneChoiceRenderer extends SelectOneRendererBase {
     }
     HtmlRendererUtils.renderCommandFacet(select, facesContext , writer);
     HtmlRendererUtils.renderFocus(id, select.isFocus(), ComponentUtils.isError(select), facesContext, writer);
-    
+    if (renderAsSelect2 && select.getPlaceholder() != null && select.getPlaceholder().length() > 0) {
+     writer.startElement(HtmlElements.OPTION, null);
+     writer.endElement(HtmlElements.OPTION);
+    }
+
     HtmlRendererUtils.renderSelectItems(select, items, select.getValue(), (String) select.getSubmittedValue(), writer,
         facesContext);
 
