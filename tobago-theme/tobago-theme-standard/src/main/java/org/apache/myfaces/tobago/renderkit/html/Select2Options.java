@@ -129,6 +129,14 @@ public class Select2Options {
       options.setMaximumSelectionLength(select.getMaximumSelectionLength());
     }
 
+    if (select.isTokenizerSet()) {
+      options.setTokenizer(select.getTokenizer());
+    }
+
+    if (select.isTokenSeparatorsSet()) {
+      options.setTokenSeparators(select.getTokenSeparators());
+    }
+
     String placeholder = select.getPlaceholder();
     if (placeholder != null && placeholder.length() > 0) {
       options.setPlaceholder(placeholder);
@@ -157,6 +165,14 @@ public class Select2Options {
 
   public void setTags(Boolean tags) {
     this.tags = tags;
+  }
+
+  public String getTokenizer() {
+    return tokenizer;
+  }
+
+  public void setTokenizer(String tokenizer) {
+    this.tokenizer = tokenizer;
   }
 
   public String[] getTokenSeparators() {
@@ -247,8 +263,14 @@ public class Select2Options {
     if (tags != null) {
       JsonUtils.encode(builder, "tags", tags);
     }
+    if (tokenizer != null) {
+      JsonUtils.encode(builder, "tokenizer", tokenizer);
+    }
     if (tokenSeparators != null) {
       JsonUtils.encode(builder, "tokenSeparators", tokenSeparators);
+    }
+    if (dropdownAutoWidth != null) {
+      JsonUtils.encode(builder, "dropdownAutoWidth", dropdownAutoWidth);
     }
     if (allowClear != null) {
       JsonUtils.encode(builder, "allowClear", allowClear);

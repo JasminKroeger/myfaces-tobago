@@ -34,3 +34,42 @@ var initAlert = function () {
 
 Tobago.registerListener(initAlert, Tobago.Phase.DOCUMENT_READY);
 Tobago.registerListener(initAlert, Tobago.Phase.AFTER_UPDATE);
+
+jQuery.fn.select2.amd.define("CustomTokenizerAdapter", [
+      "select2/utils",
+      "select2/data/tokenizer"
+    ],
+    function(Utils, Tokenizer) {
+      var emptyFunc = function (params) {
+
+      };
+      emptyFunc.tokenizer = function (params) {
+        var result = Tokenizer.prototype.tokenizer.call(this, params);
+        console.info("tokenizer result: " + result);
+        return result;
+      };
+     return function(params) {emptyFunc.tokenizer(params)};
+    });
+
+var TBG_DEMO = {
+  Select2: {
+    Tokenizer: function (params) {
+      console.info("params: " + params);
+      var tokenizer = jQuery.fn.select2.amd.require("Tokenizer");
+      var results = tokenizer.call(this, params);
+      console.info("results: " + results);
+      return results;
+    },
+
+    doOnSelect: function (event) {
+      var element = jQuery(this);
+      var data = element.select2("data");
+      var newData = event.params.data;
+      console.info("doOnSelect id     : " +  element.attr("id"));
+      console.info("doOnSelect tagName: " +  element.prop("tagName"));
+      console.info("doOnSelect newData: " +  newData);
+      console.info("doOnSelect data   : " +  data);
+      // console.info("doOnSelect : " +  element);
+    }
+  }
+};

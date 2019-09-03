@@ -8,6 +8,9 @@ package org.apache.myfaces.tobago.internal.component;
 import org.apache.myfaces.tobago.internal.component.AbstractUISelectOneChoice.Select2Keys;
 
 import javax.faces.context.FacesContext;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 public abstract class AbstractUISelectManyBox extends AbstractUISelectMany {
 
@@ -154,19 +157,29 @@ public abstract class AbstractUISelectManyBox extends AbstractUISelectMany {
     getStateHelper().put(Select2Keys.tokenizer, tokenizer);
   }
 
-  public String getTokenSeparators() {
-    String tokenSeparators = (String) getStateHelper().eval(Select2Keys.tokenSeparators);
-    if (tokenSeparators != null) {
-      return tokenSeparators;
+  public String[] getTokenSeparators() {
+    Object tokenSeparators = getStateHelper().eval(Select2Keys.tokenSeparators);
+    if (tokenSeparators instanceof String[]) {
+      return  (String[]) tokenSeparators;
+    } else if (tokenSeparators instanceof String) {
+      return parseTokenSeparators((String) tokenSeparators);
     }
     return null;
+  }
+
+  public static String[] parseTokenSeparators(String tokenSeparators) {
+    Set<String> tokens = new HashSet<String>();
+    for (int i = 0; i < tokenSeparators.length(); i++) {
+      tokens.add(tokenSeparators.substring(i, i + 1));
+    }
+    return tokens.toArray(new String[0]);
   }
 
   public boolean isTokenSeparatorsSet() {
     return getStateHelper().eval(Select2Keys.tokenSeparators) != null;
   }
 
-  public void setTokenSeparators(String tokenSeparators) {
+  public void setTokenSeparators(String[] tokenSeparators) {
     getStateHelper().put(Select2Keys.tokenSeparators, tokenSeparators);
   }
 

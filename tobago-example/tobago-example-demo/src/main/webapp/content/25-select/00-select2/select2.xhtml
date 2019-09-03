@@ -156,6 +156,23 @@
         </tc:selectManyBox>
 
       </tc:panel>
+      <tc:panel>
+        <f:facet name="layout">
+          <tc:gridLayout columns="400px;1*" rows="45px"/>
+        </f:facet>
+
+        <tc:label value="Tokenizer" for="many_5"/>
+        <tc:selectManyBox id="many_5"
+                          placeholder="tokenizer test"
+                          tokenSeparators=", -"
+                          allowCustom="true">
+          <!--tokenizer="TBG_DEMO.Select2.Tokenizer"-->
+          <f:facet name="select2:select">
+            <tc:command onclick="TBG_DEMO.Select2.doOnSelect;"/>
+          </f:facet>
+        </tc:selectManyBox>
+
+      </tc:panel>
     </tc:panel>
 
 

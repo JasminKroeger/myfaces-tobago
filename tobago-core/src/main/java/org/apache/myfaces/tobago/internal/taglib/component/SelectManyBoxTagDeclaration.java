@@ -88,7 +88,7 @@ public interface SelectManyBoxTagDeclaration
    * The list of characters that should be used as token separators.
    */
   @TagAttribute()
-  @UIComponentTagAttribute(generate = false)
+  @UIComponentTagAttribute(type = "java.lang.String[]", generate = false)
   void setTokenSeparators(String tokenSeparators);
 
   /**
