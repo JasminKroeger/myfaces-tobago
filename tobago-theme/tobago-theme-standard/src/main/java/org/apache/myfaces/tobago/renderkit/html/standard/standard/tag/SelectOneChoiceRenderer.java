@@ -20,6 +20,7 @@
 package org.apache.myfaces.tobago.renderkit.html.standard.standard.tag;
 
 import org.apache.myfaces.tobago.component.UISelectOneChoice;
+import org.apache.myfaces.tobago.internal.util.FacesContextUtils;
 import org.apache.myfaces.tobago.layout.Measure;
 import org.apache.myfaces.tobago.renderkit.html.Select2Options;
 import org.apache.myfaces.tobago.renderkit.HtmlUtils;
@@ -47,6 +48,15 @@ public class SelectOneChoiceRenderer extends SelectOneRendererBase {
 
   public boolean getRendersChildren() {
     return true;
+  }
+
+  @Override
+  public void prepareRender(FacesContext facesContext, UIComponent component) throws IOException {
+    super.prepareRender(facesContext, component);
+
+    if (Select2Options.of((UISelectOneChoice) component).hasAnyOption()) {
+      SelectManyBoxRenderer.addSelect2LanguageJs(facesContext);
+    }
   }
 
   public void encodeEnd(final FacesContext facesContext, final UIComponent component) throws IOException {

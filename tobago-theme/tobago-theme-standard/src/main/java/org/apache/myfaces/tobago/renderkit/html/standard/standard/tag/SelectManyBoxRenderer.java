@@ -21,6 +21,7 @@ package org.apache.myfaces.tobago.renderkit.html.standard.standard.tag;
 
 import org.apache.myfaces.tobago.component.UISelectManyBox;
 import org.apache.myfaces.tobago.component.UISelectManyListbox;
+import org.apache.myfaces.tobago.internal.util.FacesContextUtils;
 import org.apache.myfaces.tobago.layout.Measure;
 import org.apache.myfaces.tobago.renderkit.SelectManyRendererBase;
 import org.apache.myfaces.tobago.renderkit.css.Classes;
@@ -47,6 +48,17 @@ public class SelectManyBoxRenderer extends SelectManyRendererBase {
 
   public boolean getRendersChildren() {
     return true;
+  }
+
+  @Override
+  public void prepareRender(FacesContext facesContext, UIComponent component) throws IOException {
+    super.prepareRender(facesContext, component);
+    addSelect2LanguageJs(facesContext);
+  }
+
+  public static void addSelect2LanguageJs(FacesContext facesContext) {
+    String file = "script/contrib/select2/i18n/" + facesContext.getViewRoot().getLocale().getLanguage() + ".js";
+    FacesContextUtils.addScriptFile(facesContext, file);
   }
 
   public void encodeEnd(final FacesContext facesContext, final UIComponent component) throws IOException {
