@@ -24,6 +24,7 @@ public abstract class AbstractUISelectOneChoice extends AbstractUISelectOneBase 
   enum Select2Keys {
     allowClear,
     allowCustom,
+    hideDropdown,
     isSelect2,
     language,
     matcher,

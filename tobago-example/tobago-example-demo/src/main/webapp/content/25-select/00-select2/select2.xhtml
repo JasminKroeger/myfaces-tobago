@@ -129,6 +129,33 @@
         </tc:selectManyBox>
 
       </tc:panel>
+      <tc:panel>
+        <f:facet name="layout">
+          <tc:gridLayout columns="400px;1*" rows="45px"/>
+        </f:facet>
+
+        <tc:label value="TokenSeparators ',', ' ', '-'" for="many_3"/>
+        <tc:selectManyBox id="many_3"
+                          placeholder="Custom input allowed"
+                          tokenSeparators=", -"
+                          allowCustom="true">
+        </tc:selectManyBox>
+
+      </tc:panel>
+      <tc:panel>
+        <f:facet name="layout">
+          <tc:gridLayout columns="400px;1*" rows="45px"/>
+        </f:facet>
+
+        <tc:label value="Hiden dropdown" for="many_4"/>
+        <tc:selectManyBox id="many_4"
+                          placeholder="Enter your values!"
+                          tokenSeparators=", -"
+                          allowCustom="true"
+                          hideDropdown="true">
+        </tc:selectManyBox>
+
+      </tc:panel>
     </tc:panel>
 
 

@@ -49,6 +49,18 @@ public abstract class AbstractUISelectManyBox extends AbstractUISelectMany {
     getStateHelper().put(Select2Keys.allowCustom, allowCustom);
   }
 
+  public boolean isHideDropdown() {
+    Boolean hideDropdown = (Boolean) getStateHelper().eval(Select2Keys.hideDropdown);
+    if (hideDropdown != null) {
+      return hideDropdown;
+    }
+    return false;
+  }
+
+  public void setHideDropdown(boolean hideDropdown) {
+    getStateHelper().put(Select2Keys.hideDropdown, hideDropdown);
+  }
+
   public String getMatcher() {
     String matcher = (String) getStateHelper().eval(Select2Keys.matcher);
     if (matcher != null) {

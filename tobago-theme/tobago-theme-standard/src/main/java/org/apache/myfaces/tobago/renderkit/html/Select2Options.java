@@ -29,6 +29,7 @@ public class Select2Options {
 
   private Boolean allowClear;
   private Boolean dropdownAutoWidth;
+  private Boolean hideDropdown;
   private String language;
   private String matcher;
   private Integer maximumInputLength;
@@ -103,6 +104,10 @@ public class Select2Options {
       options.setAllowClear(select.isAllowClear());
     }
 
+    if (select.isHideDropdown()) {
+      options.setHideDropdown(true);
+    }
+
     FacesContext facesContext = FacesContext.getCurrentInstance();
     if (facesContext != null) {
       options.setLanguage(facesContext.getViewRoot().getLocale().getLanguage());
@@ -168,6 +173,14 @@ public class Select2Options {
 
   public void setAllowClear(Boolean allowClear) {
     this.allowClear = allowClear;
+  }
+
+  public Boolean getHideDropdown() {
+    return hideDropdown;
+  }
+
+  public void setHideDropdown(Boolean hideDropdown) {
+    this.hideDropdown = hideDropdown;
   }
 
   public String getLanguage() {
@@ -240,6 +253,11 @@ public class Select2Options {
     if (allowClear != null) {
       JsonUtils.encode(builder, "allowClear", allowClear);
     }
+
+    if (hideDropdown != null && hideDropdown) {
+      JsonUtils.encode(builder, "dropdownCssClass", "tobago-select2-hide-dropdown");
+    }
+
     if (language != null) {
       JsonUtils.encode(builder, "language", language);
     }
@@ -261,6 +279,7 @@ public class Select2Options {
     if (placeholder != null) {
       JsonUtils.encode(builder, "placeholder", placeholder);
     }
+
 
 
     if (builder.length() > 0 && builder.charAt(builder.length() - 1) == ',') {

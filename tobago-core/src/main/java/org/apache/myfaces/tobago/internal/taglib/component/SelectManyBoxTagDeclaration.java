@@ -79,7 +79,6 @@ public interface SelectManyBoxTagDeclaration
 
   /**
    * A javascript callback that handles automatic tokenization of free-text entry.
-   * This is a select2 feature and will force select2=true
    */
   @TagAttribute()
   @UIComponentTagAttribute(generate = false)
@@ -87,9 +86,15 @@ public interface SelectManyBoxTagDeclaration
 
   /**
    * The list of characters that should be used as token separators.
-   * This is a select2 feature and will force select2=true
    */
   @TagAttribute()
   @UIComponentTagAttribute(generate = false)
   void setTokenSeparators(String tokenSeparators);
+
+  /**
+   * Hide the dropdown, this is only useful with allowCustom=true
+   */
+  @TagAttribute()
+  @UIComponentTagAttribute(type = "boolean", defaultValue = "false", generate = false)
+  void setHideDropdown(String hideDropdown);
 }
